@@ -47,14 +47,10 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: Locale };
-}) {
-  if (!locales.includes(locale)) notFound();
+export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
+  const raw = params.locale;
+  const locale = locales.includes(raw as Locale) ? (raw as Locale) : undefined;
+  if (!locale) notFound();
 
   const messages = await getMessages();
 
