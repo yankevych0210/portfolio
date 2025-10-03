@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import Providers from "@/components/providers";
 import { locales, type Locale } from "@/i18n/locales";
@@ -29,10 +29,6 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
       description: tMeta("description"),
       images: [`/api/og?title=${encodeURIComponent(tMeta("title"))}&desc=${encodeURIComponent(tMeta("description"))}`]
     },
-    themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-      { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
-    ],
     alternates: {
       languages: {
         en: "/en",
@@ -42,6 +38,13 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
     }
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
+  ]
+};
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
