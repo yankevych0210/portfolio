@@ -10,11 +10,11 @@ import Footer from "@/components/footer";
 export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
   const { locale } = params;
   const tMeta = await getTranslations({ locale, namespace: "meta" });
-  const envBase = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const envBase = process.env.NEXT_PUBLIC_SITE_URL;
   return {
     title: tMeta("title"),
     description: tMeta("description"),
-    metadataBase: new URL(envBase),
+    ...(envBase ? { metadataBase: new URL(envBase) } : {}),
     openGraph: {
       title: tMeta("title"),
       description: tMeta("description"),
