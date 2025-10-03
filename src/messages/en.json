@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Nazar Yankevych — Front‑End Developer",
+    "description": "Front‑end developer crafting unique, high‑quality web experiences."
+  },
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Nazar Yankevych",
+    "role": "Front‑End Developer",
+    "tagline": "I build fast, accessible and beautiful web apps.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Contact Me",
+    "download_resume": "View Resume"
+  },
+  "about": {
+    "title": "About me",
+    "text": "I am a front‑end developer dedicated to creating unique web solutions. My projects are not just code but working, aesthetically appealing magic in the world of the web.",
+    "age": "Age",
+    "languages": "Languages",
+    "lang_en": "English — B1",
+    "lang_ru": "Russian — fluent",
+    "lang_ua": "Ukrainian — fluent"
+  },
+  "skills": {
+    "title": "Skills",
+    "list": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux",
+      "Bootstrap",
+      "Node.js",
+      "jQuery",
+      "Sass",
+      "Git"
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "all": "All"
+  },
+  "experience": {
+    "title": "Experience"
+  },
+  "resume": {
+    "title": "Resume",
+    "download": "Open PDF",
+    "open": "Open in new tab",
+    "summary": "Front‑End Developer creating unique web solutions.",
+    "previewFallback": "PDF preview is not supported in this browser. Please use the buttons above to open or download the resume."
+  },
+  "contact": {
+    "title": "Contacts",
+    "email": "Email",
+    "telegram": "Telegram",
+    "linkedin": "LinkedIn",
+    "phone": "Phone",
+    "github": "GitHub"
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#2f2f2f"/>
+    </linearGradient>
+    <linearGradient id="g-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f1f1"/>
+      <stop offset="100%" stop-color="#cfcfcf"/>
+    </linearGradient>
+  </defs>
+  <style>
+    :root { color-scheme: light dark }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: url(#g-dark) }
+      .fg { fill: #0a0a0a }
+    }
+  </style>
+  <rect class="bg" x="16" y="16" width="224" height="224" rx="56" fill="url(#g-light)"/>
+  <text class="fg" x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial" font-size="132" font-weight="800" fill="#ffffff">NY</text>
+</svg>

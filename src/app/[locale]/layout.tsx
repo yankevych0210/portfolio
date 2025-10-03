@@ -1,0 +1,69 @@
+import type { Metadata } from "next";
+import "../globals.css";
+import Providers from "@/components/providers";
+import { locales, type Locale } from "@/i18n/locales";
+import { notFound } from "next/navigation";
+import { getMessages, getTranslations } from "next-intl/server";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
+export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
+  const { locale } = params;
+  const tMeta = await getTranslations({ locale, namespace: "meta" });
+  const envBase = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  return {
+    title: tMeta("title"),
+    description: tMeta("description"),
+    metadataBase: new URL(envBase),
+    openGraph: {
+      title: tMeta("title"),
+      description: tMeta("description"),
+      url: `/${locale}`,
+      images: [
+        { url: `/api/og?title=${encodeURIComponent(tMeta("title"))}&desc=${encodeURIComponent(tMeta("description"))}`, width: 1200, height: 630, alt: "OG Banner" }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tMeta("title"),
+      description: tMeta("description"),
+      images: [`/api/og?title=${encodeURIComponent(tMeta("title"))}&desc=${encodeURIComponent(tMeta("description"))}`]
+    },
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+      { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
+    ],
+    alternates: {
+      languages: {
+        en: "/en",
+        ru: "/ru",
+        uk: "/ua"
+      }
+    }
+  };
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
+  const { locale } = params;
+  if (!locales.includes(locale)) notFound();
+
+  const messages = await getMessages();
+
+  return (
+    <Providers locale={locale} messages={messages}>
+      <Header />
+      {children}
+      <Footer />
+    </Providers>
+  );
+}
