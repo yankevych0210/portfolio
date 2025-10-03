@@ -1,7 +1,7 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {Link as I18nLink, usePathname} from "@/i18n/navigation";
+import {usePathname} from "@/i18n/navigation";
 import {cn} from "@/lib/utils";
 import {ThemeToggle} from "@/components/theme-toggle";
 import {LanguageSwitcher} from "@/components/language-switcher";

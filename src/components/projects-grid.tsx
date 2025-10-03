@@ -1,7 +1,6 @@
 "use client";
 
 import {useMemo, useState} from "react";
-import {Badge} from "@/components/ui/badge";
 import {Button} from "@/components/ui/button";
 import ProjectCard from "@/components/project-card";
 import {PROJECTS, type Project} from "@/data/projects";

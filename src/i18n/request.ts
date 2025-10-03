@@ -1,9 +1,15 @@
 import {getRequestConfig} from 'next-intl/server';
 
 const SUPPORTED = ['en', 'ru', 'ua'] as const;
+type SupportedLocale = typeof SUPPORTED[number];
 
-export default getRequestConfig(async ({locale}) => {
-  const actual = SUPPORTED.includes(locale as any) ? (locale as typeof SUPPORTED[number]) : 'en';
+function isSupportedLocale(l: string): l is SupportedLocale {
+  return (SUPPORTED as readonly string[]).includes(l);
+}
+
+export default getRequestConfig(async ({locale}: {locale?: string}) => {
+  const input = typeof locale === 'string' ? locale : '';
+  const actual: SupportedLocale = isSupportedLocale(input) ? input : 'en';
   return {
     locale: actual,
     timeZone: 'Europe/Kyiv',
