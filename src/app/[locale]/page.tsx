@@ -14,20 +14,16 @@ import EducationList from "@/components/education-list";
 import {PROFILE} from "@/data/profile";
 
 type LayoutParams = { locale: string };
-type MaybePromise<T> = T | Promise<T>;
-function isPromise<T>(v: unknown): v is Promise<T> {
-  return typeof (v as { then?: unknown })?.then === 'function';
-}
 
-export default async function HomePage({params}: {params: MaybePromise<LayoutParams>}) {
-  const resolved = isPromise<LayoutParams>(params) ? await params : params;
-  const tHero = await getTranslations({locale: resolved.locale, namespace: "hero"});
-  const tContact = await getTranslations({locale: resolved.locale, namespace: "contact"});
-  const tAbout = await getTranslations({locale: resolved.locale, namespace: "about"});
-  const tSkills = await getTranslations({locale: resolved.locale, namespace: "skills"});
-  const tProjects = await getTranslations({locale: resolved.locale, namespace: "projects"});
-  const tExperience = await getTranslations({locale: resolved.locale, namespace: "experience"});
-  const tEducation = await getTranslations({locale: resolved.locale, namespace: "education"});
+export default async function HomePage({params}: {params: Promise<LayoutParams>}) {
+  const { locale } = await params;
+  const tHero = await getTranslations({locale, namespace: "hero"});
+  const tContact = await getTranslations({locale, namespace: "contact"});
+  const tAbout = await getTranslations({locale, namespace: "about"});
+  const tSkills = await getTranslations({locale, namespace: "skills"});
+  const tProjects = await getTranslations({locale, namespace: "projects"});
+  const tExperience = await getTranslations({locale, namespace: "experience"});
+  const tEducation = await getTranslations({locale, namespace: "education"});
 
   return (
     <main className="relative">
@@ -100,7 +96,7 @@ export default async function HomePage({params}: {params: MaybePromise<LayoutPar
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {PROJECTS.map((p) => (
-            <ProjectCard key={p.slug} p={p} locale={resolved.locale} />
+            <ProjectCard key={p.slug} p={p} locale={locale} />
           ))}
         </div>
       </Section>

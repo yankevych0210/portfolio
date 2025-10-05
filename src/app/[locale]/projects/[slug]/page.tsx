@@ -10,13 +10,14 @@ export function generateStaticParams() {
   return PROJECTS.map((p) => ({slug: p.slug}));
 }
 
-export default function ProjectPage({params}: {params: {locale: Locale; slug: string}}) {
-  const project = PROJECTS.find((p) => p.slug === params.slug);
+export default async function ProjectPage({params}: {params: Promise<{locale: Locale; slug: string}>}) {
+  const { locale, slug } = await params;
+  const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) return notFound();
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 space-y-8">
-      <Link href={`/${params.locale}#projects`} className="text-sm text-muted-foreground hover:underline">← Back to projects</Link>
+      <Link href={`/${locale}#projects`} className="text-sm text-muted-foreground hover:underline">← Back to projects</Link>
 
       <header className="space-y-2">
         <div className="flex items-center gap-2">
@@ -43,7 +44,7 @@ export default function ProjectPage({params}: {params: {locale: Locale; slug: st
             </Button>
           )}
           <Button asChild variant="outline">
-            <Link href={`/${params.locale}#projects`}>Back</Link>
+            <Link href={`/${locale}#projects`}>Back</Link>
           </Button>
         </div>
       </header>
