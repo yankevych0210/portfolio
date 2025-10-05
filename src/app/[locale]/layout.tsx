@@ -8,8 +8,9 @@ import { getMessages, getTranslations } from "next-intl/server";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
-export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
-  const { locale } = params;
+export async function generateMetadata({ params }: { params: MaybePromise<{ locale: Locale }> }): Promise<Metadata> {
+  const resolved = isPromise<{ locale: Locale }>(params) ? await params : params;
+  const { locale } = resolved;
   const tMeta = await getTranslations({ locale, namespace: "meta" });
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-yankevych.vercel.app"),

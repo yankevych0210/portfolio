@@ -28,9 +28,13 @@ export function Section({
       id={id}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{
+        once: true,
+        amount: 0.12,
+        margin: "0px 0px -10% 0px",
+      }}
       variants={variants}
-      className={cn("scroll-mt-24 md:scroll-mt-28", className)}
+      className={cn("scroll-mt-28 md:scroll-mt-32", className)}
       {...props}
     >
       {children}

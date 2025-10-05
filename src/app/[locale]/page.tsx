@@ -49,7 +49,8 @@ export default async function HomePage({params}: {params: Promise<LayoutParams>}
               <Link href="#contact">{tHero("cta_contact")}</Link>
             </Button>
             <Button asChild variant="secondary">
-              <Link href="/resume.pdf" target="_blank">{tHero("download_resume")}</Link>
+              {/* Use native anchor for static asset to avoid _rsc 404 noise */}
+              <a href="/resume.pdf" target="_blank" rel="noreferrer noopener">{tHero("download_resume")}</a>
             </Button>
           </div>
           <div className="flex items-center gap-4 pt-4 text-muted-foreground">
@@ -63,7 +64,14 @@ export default async function HomePage({params}: {params: Promise<LayoutParams>}
         <div className="justify-self-center">
           <div className="relative w-48 h-48 sm:w-64 sm:h-64">
             <div className="relative w-full h-full rounded-full overflow-hidden ring-1 ring-border">
-              <Image src="/profile.jpg" alt="Profile" fill className="object-cover" />
+              <Image
+                src="/profile.jpg"
+                alt="Profile"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 12rem, 16rem"
+                priority
+              />
             </div>
             {(() => {
               const birth = new Date(PROFILE.birthDate);

@@ -13,9 +13,10 @@ export default async function ResumePage({params}: {params: Promise<LayoutParams
         <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="text-muted-foreground">{t("summary")}</p>
         <div className="flex gap-3 pt-1">
-          <Link href="/resume.pdf" target="_blank" className="inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90">
+          {/* Use native anchor to avoid Next prefetching static PDF with _rsc */}
+          <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90">
             <FileDown className="size-4" /> {t("download")}
-          </Link>
+          </a>
         </div>
       </header>
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
