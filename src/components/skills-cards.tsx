@@ -5,26 +5,46 @@ import {Code2, Palette, Wrench, Languages} from "lucide-react";
 export default function SkillsCards() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Development Stack (first) */}
       <SkillCard
         icon={<span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-300"><Code2 className="size-5" /></span>}
-        title="Frontend"
-        items={["React", "Next.js", "TypeScript", "Redux", "SPA", "SSR/SSG"]}
+        title="Development Stack"
+        items={["HTML/CSS", "JavaScript (JS)", "TypeScript", "PHP", "Node.js"]}
       />
+
+      {/* UI Kits (second) */}
       <SkillCard
         icon={<span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-300"><Palette className="size-5" /></span>}
-        title="Styling"
-        items={["Tailwind CSS", "SCSS/SASS", "CSS3", "Bootstrap", "Animations"]}
+        title="UI Kits"
+        items={[
+          "Tailwind CSS",
+          "shadcn/ui",
+          "Bootstrap",
+          "HeroUI",
+          "Bulma",
+          "Foundation",
+          "Metro 4",
+          "Materialize",
+          "WindyCSS",
+          "Tachyons",
+          "SCSS/SASS"
+        ]}
       />
+
+      {/* Libraries & Frameworks */}
       <SkillCard
         icon={<span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300"><Wrench className="size-5" /></span>}
-        title="Tools"
-        items={["Git", "Node.js", "GraphQL", "REST", "Vercel/Netlify"]}
+        title="Libraries & Frameworks"
+        items={["React", "Redux", "jQuery", "GraphQL", "JSX"]}
       />
+
+      {/* Tools & Design */}
       <SkillCard
         icon={<span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300"><Languages className="size-5" /></span>}
-        title="Languages"
-        items={["Ukrainian (C2)", "Russian (C2)", "English (B1)"]}
+        title="Tools & Design"
+        items={["Git", "REST", "Web", "Figma", "Macros"]}
       />
+
     </div>
   );
 }

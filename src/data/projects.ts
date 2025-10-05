@@ -21,9 +21,9 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug: "avtoinstall",
-    title: "AvtoInstallServis Websites",
+    title: "AvtoInstallServis",
     role: "Front‑End Developer",
-    stack: ["React", "Bootstrap", "JS"],
+    stack: ["HTML", "CSS", "JavaScript", "Web"],
     summary: "Corporate websites for AvtoInstallServis with clean, responsive UI and fast loading.",
     image: "/avtoinstall/img-1.png",
     images: [
@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
       "/avtoinstall/img-3.png",
       "/avtoinstall/img-4.png",
     ],
-    tags: ["React", "JavaScript", "Bootstrap", "Responsive"],
+    tags: ["HTML", "CSS", "JavaScript", "Web"],
     status: 'Freelance',
     url: "https://at.avtoinstallservis.site/",
     case: {
@@ -44,9 +44,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "cherrytrader",
-    title: "CherryTrader Trading Platform",
+    title: "CherryTrader",
     role: "Front‑End Engineer",
-    stack: ["React", "Next.js", "TypeScript"],
+    stack: ["Git", "Next.js", "TypeScript", "JavaScript", "HeroUI", "Tailwind", "React", "CSS", "Redux", "SCSS"],
     summary: "Trading platform UI improvements: responsiveness, interactivity and cross‑browser stability.",
     image: "/cherrytrader/img-1.png",
     images: [
@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
       "/cherrytrader/img-3.png",
       "/cherrytrader/img-4.png",
     ],
-    tags: ["Next.js", "TypeScript", "Redux", "SCSS"],
+    tags: ["Git", "Next.js", "TypeScript", "JavaScript", "HeroUI", "Tailwind", "React", "CSS", "Redux", "SCSS"],
     status: 'Contract',
     url: "https://cherrytrader.com/",
     case: {
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
     slug: "streaming",
     title: "Streaming Platform UI",
     role: "Front‑End Developer",
-    stack: ["React", "Tailwind", "TypeScript"],
+    stack: ["HTML", "CSS", "JavaScript", "Web", "Figma"],
     summary: "Streaming platform interface with adaptive layout and consistent media experience.",
     image: "/streaming/img-1.png",
     images: [
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
       "/streaming/img-3.png",
       "/streaming/img-4.png",
     ],
-    tags: ["React", "Tailwind", "TypeScript", "Responsive"],
+    tags: ["HTML", "CSS", "JavaScript", "Web", "Figma"],
     status: 'Project',
     url: "https://streaming-platform-pi.vercel.app/",
     case: {
@@ -91,9 +91,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "framer",
-    title: "Framer Landing",
+    title: "Framer",
     role: "Front‑End Developer",
-    stack: ["Next.js", "Tailwind", "Framer Motion"],
+    stack: ["HTML", "CSS", "Web", "Figma"],
     summary: "Animated landing built with Framer Motion: smooth hero reveal and micro‑interactions.",
     image: "/framer/img-1.png",
     images: [
@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
       "/framer/img-2.png",
       "/framer/img-3.png",
     ],
-    tags: ["Animations", "Landing", "Tailwind"],
+    tags: ["HTML", "CSS", "Web", "Figma"],
     status: 'Project',
     url: "https://framer-ebon.vercel.app/",
     case: {
@@ -114,22 +114,22 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "mole",
-    title: "Mole JS Demo",
+    title: "Mole Game",
     role: "Front‑End Developer",
-    stack: ["Next.js", "TypeScript"],
+    stack: ["HTML", "CSS", "JavaScript", "Web"],
     summary: "Lightweight experimental app with clean, type‑safe UI.",
     image: "/mole/img-1.png",
     images: [
       "/mole/img-1.png",
       "/mole/img-2.png",
     ],
-    tags: ["TypeScript", "UI"],
+    tags: ["HTML", "CSS", "JavaScript", "Web"],
     status: 'Project',
     url: "https://mole-js.vercel.app/",
     case: {
       goal: 'Minimal app with clean UI.',
       tasks: ['Small components', 'Type-safe code'],
-      solution: ['Next.js + TS', 'Strict lints & formatters'],
+      solution: ['HTML + CSS + JavaScript', 'Strict lints & formatters'],
       results: ['Fast dev cycle', 'Readable codebase']
     },
     repo: "https://github.com/yankevych0210/mole_js"
@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
     slug: "zerolimits",
     title: "Zero Limits",
     role: "Front‑End Developer",
-    stack: ["Next.js", "Tailwind"],
+    stack: ["React", "Framer Motion", "GSAP", "Tailwind", "JavaScript", "Web"],
     summary: "Minimal modern landing with balanced typography and responsive layout.",
     image: "/zerolimits/img-1.png",
     images: [
@@ -152,8 +152,8 @@ export const PROJECTS: Project[] = [
     url: "https://zero-limits.vercel.app/",
     case: {
       goal: 'Minimal modern landing.',
-      tasks: ['Typography scale', 'Sections rhythm', 'Responsive images'],
-      solution: ['Tailwind design tokens', 'OKLCH color palette'],
+      tasks: ['Typography scale', 'Sections rhythm', 'Responsive images'], 
+      solution: ["React", "Framer Motion", "GSAP", "Tailwind", "JavaScript", "Web"],
       results: ['Consistent look on all devices']
     },
     repo: "https://github.com/yankevych0210/Zero-Limits"
@@ -162,7 +162,7 @@ export const PROJECTS: Project[] = [
     slug: "codepen",
     title: "CodePen UI Clone",
     role: "Front‑End Developer",
-    stack: ["Next.js", "Tailwind"],
+    stack: ["SCSS", "Sass", "CSS", "HTML", "JSX", "Front‑End", "React", "GraphQL", "Git", "Redux", "Web", "JavaScript"],
     summary: "UI exploration inspired by CodePen: header, cards grid and hover interactions.",
     image: "/codepen/img-1.png",
     images: [
@@ -177,7 +177,7 @@ export const PROJECTS: Project[] = [
     case: {
       goal: 'Explore UI inspired by CodePen.',
       tasks: ['Header/nav layout', 'Cards grid', 'Hover effects'],
-      solution: ['Custom cards & filters', 'Motion hover states'],
+      solution: ["SCSS", "Sass", "CSS", "HTML", "JSX", "Front‑End", "React", "GraphQL", "Git", "Redux", "Web", "JavaScript"],
       results: ['Cohesive UI kit sample']
     },
     repo: "https://github.com/yankevych0210/codepen"

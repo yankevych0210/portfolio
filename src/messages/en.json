@@ -7,13 +7,14 @@
     "projects": "Projects",
     "about": "About",
     "contact": "Contact",
+    "experience": "Experience",
     "resume": "Resume"
   },
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Nazar Yankevych",
     "role": "Front‑End Developer",
-    "tagline": "I build fast, accessible and beautiful web apps.",
+    "tagline": "Dedicated to creating unique web solutions. My projects are not just code but working, aesthetically appealing magic in the world of the web.",
     "cta_projects": "View Projects",
     "cta_contact": "Contact Me",
     "download_resume": "View Resume"
@@ -45,6 +46,9 @@
   "projects": {
     "title": "Projects",
     "all": "All"
+  },
+  "education": {
+    "title": "Education"
   },
   "experience": {
     "title": "Experience"

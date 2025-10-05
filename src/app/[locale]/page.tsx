@@ -4,12 +4,14 @@ import {CONTACTS} from "@/data/contacts";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {Badge} from "@/components/ui/badge";
+import {Card} from "@/components/ui/card";
 import {PROJECTS} from "@/data/projects";
 import ProjectCard from "@/components/project-card";
 import {Section} from "@/components/section";
-import {Github, Linkedin, Mail, Phone, Send} from "lucide-react";
+import {Github, Linkedin, Mail, Phone, Send, MapPin, Calendar} from "lucide-react";
 import SkillsCards from "@/components/skills-cards";
 import ExperienceList from "@/components/experience-list";
+import EducationList from "@/components/education-list";
 import {PROFILE} from "@/data/profile";
 
 export default async function HomePage({params}: {params: {locale: string}}) {
@@ -19,6 +21,7 @@ export default async function HomePage({params}: {params: {locale: string}}) {
   const tSkills = await getTranslations({locale: params.locale, namespace: "skills"});
   const tProjects = await getTranslations({locale: params.locale, namespace: "projects"});
   const tExperience = await getTranslations({locale: params.locale, namespace: "experience"});
+  const tEducation = await getTranslations({locale: params.locale, namespace: "education"});
 
   return (
     <main className="relative">
@@ -56,8 +59,25 @@ export default async function HomePage({params}: {params: {locale: string}}) {
           </div>
         </div>
         <div className="justify-self-center">
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden ring-1 ring-border">
-            <Image src="/profile.jpg" alt="Profile" fill className="object-cover" />
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64">
+            <div className="relative w-full h-full rounded-full overflow-hidden ring-1 ring-border">
+              <Image src="/profile.jpg" alt="Profile" fill className="object-cover" />
+            </div>
+            {(() => {
+              const birth = new Date(PROFILE.birthDate);
+              const now = new Date();
+              let age = now.getFullYear() - birth.getFullYear();
+              const m = now.getMonth() - birth.getMonth();
+              if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+              return (
+                <div className="absolute -bottom-2 right-0 sm:bottom-1 sm:right-1 z-10">
+                  <div className="flex items-center gap-2 rounded-full border bg-background/95 backdrop-blur px-3 py-1.5 shadow-lg ring-1 ring-border">
+                    <Calendar className="size-4 text-primary" />
+                    <span className="text-sm font-medium">{tAbout("age")}: {age}</span>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </Section>
@@ -79,35 +99,11 @@ export default async function HomePage({params}: {params: {locale: string}}) {
         </div>
       </Section>
 
-      <Section id="about" className="space-y-4">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-x-0 -top-10 -z-10 h-40 bg-[radial-gradient(50%_60%_at_50%_0%,theme(colors.primary/10%),transparent_70%)] dark:bg-[radial-gradient(50%_60%_at_50%_0%,theme(colors.primary/18%),transparent_70%)]" />
-          <h2 className="text-2xl font-semibold tracking-tight">{tAbout("title")}</h2>
-        </div>
-        <div className="rounded-lg border p-4 bg-card/30">
-          <p className="text-muted-foreground leading-relaxed">{tAbout("text")}</p>
-        </div>
-        {(() => {
-          const birth = new Date(PROFILE.birthDate);
-          const now = new Date();
-          let age = now.getFullYear() - birth.getFullYear();
-          const m = now.getMonth() - birth.getMonth();
-          if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
-          return (
-            <div className="flex flex-wrap gap-2 pt-1">
-              <Badge variant="secondary">{tAbout("age")}: {age}</Badge>
-              {PROFILE.location && <Badge variant="secondary">{PROFILE.location}</Badge>}
-            </div>
-          );
-        })()}
-        <div className="pt-1">
-          <p className="text-sm text-muted-foreground mb-1">{tAbout("languages")}</p>
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline">{tAbout("lang_en")}</Badge>
-            <Badge variant="outline">{tAbout("lang_ru")}</Badge>
-            <Badge variant="outline">{tAbout("lang_ua")}</Badge>
-          </div>
-        </div>
+      {/* About section removed as requested; key facts moved to Hero */}
+
+      <Section id="education" className="space-y-4">
+        <h2 className="text-2xl font-semibold tracking-tight">{tEducation("title")}</h2>
+        <EducationList />
       </Section>
 
       <Section id="experience" className="space-y-4">
@@ -117,12 +113,13 @@ export default async function HomePage({params}: {params: {locale: string}}) {
 
       <Section id="contact" className="space-y-6">
         <h2 className="text-2xl font-semibold tracking-tight">{tContact("title")}</h2>
-        <div className="grid sm:grid-cols-2 gap-3">
-          <ContactItem icon={<Mail className="size-4" />} label={tContact("email")} value={CONTACTS.email} href={`mailto:${CONTACTS.email}`} />
-          <ContactItem icon={<Send className="size-4" />} label={tContact("telegram")} value="@nazar_yankevych" href={CONTACTS.telegram} />
-          <ContactItem icon={<Linkedin className="size-4" />} label={tContact("linkedin")} value="nazar-yankevych" href={CONTACTS.linkedin} />
-          <ContactItem icon={<Phone className="size-4" />} label={tContact("phone")} value={CONTACTS.phone} href={`tel:${CONTACTS.phone}`} />
-          <ContactItem icon={<Github className="size-4" />} label={tContact("github")} value="yankevych0210" href={CONTACTS.github} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <ContactItem icon={<Mail className="size-5" />} label={tContact("email")} value={CONTACTS.email} href={`mailto:${CONTACTS.email}`} />
+          <ContactItem icon={<Send className="size-5" />} label={tContact("telegram")} value="@nazar_yankevich" href={CONTACTS.telegram} />
+          <ContactItem icon={<Linkedin className="size-5" />} label={tContact("linkedin")} value="nazar-yankevych" href={CONTACTS.linkedin} />
+          <ContactItem icon={<Phone className="size-5" />} label={tContact("phone")} value={CONTACTS.phone} href={`tel:${CONTACTS.phone}`} />
+          <ContactItem icon={<Github className="size-5" />} label={tContact("github")} value="yankevych0210" href={CONTACTS.github} />
+          <ContactItem icon={<MapPin className="size-5" />} label="Location" value="Kremenchug, Ukraine" href="https://maps.google.com/?q=Kremenchuk,+Ukraine" />
         </div>
       </Section>
       </div>
@@ -132,14 +129,18 @@ export default async function HomePage({params}: {params: {locale: string}}) {
 
 function ContactItem({label, value, href, icon}: {label: string; value: string; href: string; icon: React.ReactNode}) {
   return (
-    <Button asChild variant="outline" className="justify-between">
-      <Link href={href} className="flex w-full items-center gap-3">
-        <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-          {icon}
-          {label}
-        </span>
-        <span className="font-medium break-all">{value}</span>
-      </Link>
-    </Button>
+    <Link href={href} className="group">
+      <Card className="p-4 h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+        <div className="flex items-start gap-3">
+          <div className="shrink-0 rounded-full bg-primary/10 text-primary grid place-items-center size-10 group-hover:bg-primary/15 transition-colors">
+            {icon}
+          </div>
+          <div className="min-w-0">
+            <div className="text-xs text-muted-foreground">{label}</div>
+            <div className="font-medium break-all transition-colors group-hover:text-muted-foreground">{value}</div>
+          </div>
+        </div>
+      </Card>
+    </Link>
   );
 }

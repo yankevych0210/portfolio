@@ -122,3 +122,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Global UX refinements */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset for sticky header to avoid overlapping content on anchor navigation */
+    scroll-padding-top: 80px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, transparent);
+    color: var(--foreground);
+  }
+
+  a, button, [role="button"], input, textarea, summary {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  /* Subtle focus ring for better accessibility */
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--primary) 55%, transparent);
+    outline-offset: 2px;
+  }
+}

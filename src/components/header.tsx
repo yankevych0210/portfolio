@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {useTranslations} from "next-intl";
 import {usePathname} from "@/i18n/navigation";
 import {cn} from "@/lib/utils";
@@ -21,14 +22,19 @@ export default function Header() {
 
   const nav = [
     {href: "#projects", label: t("projects")},
-    {href: "#about", label: t("about")},
+    {href: "#experience", label: t("experience")},
     {href: "#contact", label: t("contact")},
     {href: "resume", label: t("resume")}
   ];
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b">
-      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
+      <motion.div
+        initial={{ y: -8, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 160, damping: 18, mass: 0.6 }}
+        className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4"
+      >
         <Link href={`/${locale}`} aria-label="Home"><Logo /></Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {nav.map((item) => {
@@ -39,7 +45,7 @@ export default function Header() {
                 key={item.href}
                 href={href}
                 className={cn(
-                  "text-muted-foreground hover:text-foreground transition-colors",
+                  "text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:scale-x-0 after:bg-current after:opacity-60 hover:after:scale-x-100 after:transition-transform after:origin-left",
                   isActive && "text-foreground"
                 )}
               >
@@ -77,9 +83,6 @@ export default function Header() {
                   <Button asChild>
                     <Link href="/resume.pdf" target="_blank">View Resume</Link>
                   </Button>
-                  <Button asChild variant="outline">
-                    <Link href={`/${locale}/resume`}>Open Resume Page</Link>
-                  </Button>
                 </div>
                 <div className="h-px bg-border" />
                 <div className="flex items-center gap-3 text-muted-foreground">
@@ -92,7 +95,7 @@ export default function Header() {
             </SheetContent>
           </Sheet>
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }

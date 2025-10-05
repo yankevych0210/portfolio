@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import Providers from "@/components/providers";
 import { locales, type Locale } from "@/i18n/locales";
 import { notFound } from "next/navigation";
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
   const { locale } = params;
   const tMeta = await getTranslations({ locale, namespace: "meta" });
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-yankevych.vercel.app"),
     title: tMeta("title"),
     description: tMeta("description"),
     openGraph: {

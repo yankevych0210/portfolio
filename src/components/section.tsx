@@ -12,10 +12,15 @@ export function Section({
 }: ComponentPropsWithoutRef<typeof motion.section>) {
   const prefersReducedMotion = useReducedMotion();
   const variants: Variants = prefersReducedMotion
-    ? {hidden: {opacity: 0}, show: {opacity: 1}}
+    ? { hidden: { opacity: 0 }, show: { opacity: 1 } }
     : {
-        hidden: {opacity: 0, y: 16},
-        show: {opacity: 1, y: 0, transition: {duration: 0.5}},
+        hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
+        show: {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          transition: { type: "spring", stiffness: 120, damping: 18, mass: 0.6 }
+        }
       };
 
   return (
@@ -23,9 +28,9 @@ export function Section({
       id={id}
       initial="hidden"
       whileInView="show"
-      viewport={{once: true, amount: 0.2}}
+      viewport={{ once: true, amount: 0.3 }}
       variants={variants}
-      className={cn(className)}
+      className={cn("scroll-mt-24 md:scroll-mt-28", className)}
       {...props}
     >
       {children}

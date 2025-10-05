@@ -52,7 +52,7 @@ export default function ProjectPage({params}: {params: {locale: Locale; slug: st
         <ProjectGallery images={project.images ?? (project.image ? [project.image] : [])} alt={project.title} />
       </section>
 
-      <section className="grid gap-6 sm:grid-cols-2">
+      <section className="grid gap-6 sm:grid-cols-1">
         <div className="rounded-lg border p-4">
           <h2 className="text-lg font-semibold tracking-tight mb-2">Details</h2>
           <dl className="grid grid-cols-3 gap-x-3 gap-y-2 text-sm">
@@ -74,51 +74,7 @@ export default function ProjectPage({params}: {params: {locale: Locale; slug: st
             )}
           </dl>
         </div>
-        <div className="rounded-lg border p-4">
-          <h2 className="text-lg font-semibold tracking-tight mb-2">Overview</h2>
-          <p className="text-sm leading-6 text-muted-foreground">{project.summary}</p>
-          {project.tags && project.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {project.tags.map((t) => (
-                <Badge key={t} variant="secondary" className="text-xs py-0.5">{t}</Badge>
-              ))}
-            </div>
-          )}
-        </div>
       </section>
-
-      {project.case && (
-        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border p-4">
-            <h3 className="font-medium mb-2">Goal</h3>
-            <p className="text-sm text-muted-foreground">{project.case.goal}</p>
-          </div>
-          <div className="rounded-lg border p-4">
-            <h3 className="font-medium mb-2">Tasks</h3>
-            <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-              {(project.case.tasks ?? []).map((t, i) => (
-                <li key={i}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-lg border p-4">
-            <h3 className="font-medium mb-2">Solution</h3>
-            <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-              {(project.case.solution ?? []).map((t, i) => (
-                <li key={i}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-lg border p-4">
-            <h3 className="font-medium mb-2">Results</h3>
-            <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-              {(project.case.results ?? []).map((t, i) => (
-                <li key={i}>{t}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
     </main>
   );
 }

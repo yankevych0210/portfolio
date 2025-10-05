@@ -5,6 +5,8 @@ export type Experience = {
   type?: 'Full-time' | 'Contract' | 'Freelance' | 'Project';
   description: string;
   tags: string[];
+  projectName?: string;
+  projectUrls?: string[];
 };
 
 export const EXPERIENCE: Experience[] = [
@@ -14,8 +16,12 @@ export const EXPERIENCE: Experience[] = [
     period: 'May 2023 – Present',
     type: 'Full-time',
     description:
-      'Developed diverse web projects: Landing/Multi-Landing, Market with cart, Game Sites, Showcases, Blogs. Focus on adaptive, performant UI and modern design approaches.',
-    tags: ['React', 'JavaScript', 'Tailwind', 'Blogs', 'E-commerce']
+      'Built a range of websites — Landing/Multi‑Landing, Market land, Market with basket, Game sites, Showcases, and Blogs — using JavaScript, libraries, and macros. Each project required a tailored approach, with emphasis on adaptive, highly functional UI, modern design, and performance.',
+    tags: [
+      'HTML', 'CSS', 'JavaScript', 'jQuery', 'Front‑End', 'Macros',
+      'Bootstrap', 'Bulma', 'Foundation', 'Metro 4 UI', 'Materialize',
+      'Tailwind CSS', 'Windi CSS', 'Tachyons', 'React', 'Blogs', 'E‑commerce'
+    ]
   },
   {
     company: 'LeadAR',
@@ -23,8 +29,10 @@ export const EXPERIENCE: Experience[] = [
     period: 'January 2025',
     type: 'Project',
     description:
-      'Built the front-end for a streaming platform with clean design and responsive behavior across devices.',
-    tags: ['React', 'TypeScript', 'Responsive']
+      'Solely responsible for the front‑end of a streaming platform. Delivered a modern, clean UI with adaptive, responsive behavior across devices.',
+    projectName: 'Streaming Platform UI',
+    projectUrls: ['https://streaming-platform-pi.vercel.app/'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Web','Responsive']
   },
   {
     company: 'Veido',
@@ -32,8 +40,10 @@ export const EXPERIENCE: Experience[] = [
     period: 'December 2024 – February 2025',
     type: 'Contract',
     description:
-      'Collaborated on cherrytrader.com: responsive UI components, interactive features, performance optimization and cross-browser compatibility.',
-    tags: ['Next.js', 'TypeScript', 'Redux', 'SCSS']
+      'Collaborated on cherrytrader.com: implemented responsive UI components and interactive features, optimized performance, ensured cross‑browser compatibility, and worked closely with designers and backend to deliver a seamless user experience.',
+    projectName: 'CherryTrader',
+    projectUrls: ['https://cherrytrader.com'],
+    tags: ['Git', 'Next.js', 'TypeScript', 'JavaScript', 'HeroUI', 'Tailwind', 'React', 'CSS', 'Redux', 'SCSS']
   },
   {
     company: 'Annamax',
@@ -41,15 +51,10 @@ export const EXPERIENCE: Experience[] = [
     period: 'November 2024',
     type: 'Freelance',
     description:
-      'Delivered Austrian (at.avtoinstallservis.site) and main (avtoinstallservis.site) websites for AvtoInstallServis.',
-    tags: ['React', 'Bootstrap', 'JavaScript']
+      'Developed and launched the Austrian (at.avtoinstallservis.site) and main (avtoinstallservis.site) websites for AvtoInstallServis as a one‑time freelance project using modern front‑end technologies.',
+    projectName: 'AvtoInstallServis',
+    projectUrls: ['https://at.avtoinstallservis.site','https://avtoinstallservis.site'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Web', 'Responsive']
   },
-  {
-    company: 'A-Level Ukraine IT-School',
-    role: 'Student',
-    period: 'September 2022 – April 2023',
-    description:
-      'Studied HTML/CSS (Flexbox/Responsive), practical layout, Git/Linux/Bootstrap; JavaScript (fundamentals, DOM, Storage); React (SPA, hooks, forms, Redux).',
-    tags: ['HTML/CSS', 'JavaScript', 'React', 'Redux']
-  }
+ 
 ];
