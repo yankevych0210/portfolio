@@ -2,8 +2,11 @@ import {getTranslations} from "next-intl/server";
 import Link from "next/link";
 import {FileDown} from "lucide-react";
 
-export default async function ResumePage({params}: {params: {locale: string}}) {
-  const t = await getTranslations({locale: params.locale, namespace: "resume"});
+type LayoutParams = { locale: string };
+
+export default async function ResumePage({params}: {params: Promise<LayoutParams>}) {
+  const { locale } = await params;
+  const t = await getTranslations({locale, namespace: "resume"});
   return (
     <main className="mx-auto max-w-4xl px-4 py-12 space-y-6">
       <header className="space-y-2">
@@ -25,3 +28,4 @@ export default async function ResumePage({params}: {params: {locale: string}}) {
     </main>
   );
 }
+
