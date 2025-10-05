@@ -3,7 +3,6 @@ import Image from "next/image";
 import {CONTACTS} from "@/data/contacts";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import {Badge} from "@/components/ui/badge";
 import {Card} from "@/components/ui/card";
 import {PROJECTS} from "@/data/projects";
 import ProjectCard from "@/components/project-card";
@@ -14,14 +13,21 @@ import ExperienceList from "@/components/experience-list";
 import EducationList from "@/components/education-list";
 import {PROFILE} from "@/data/profile";
 
-export default async function HomePage({params}: {params: {locale: string}}) {
-  const tHero = await getTranslations({locale: params.locale, namespace: "hero"});
-  const tContact = await getTranslations({locale: params.locale, namespace: "contact"});
-  const tAbout = await getTranslations({locale: params.locale, namespace: "about"});
-  const tSkills = await getTranslations({locale: params.locale, namespace: "skills"});
-  const tProjects = await getTranslations({locale: params.locale, namespace: "projects"});
-  const tExperience = await getTranslations({locale: params.locale, namespace: "experience"});
-  const tEducation = await getTranslations({locale: params.locale, namespace: "education"});
+type LayoutParams = { locale: string };
+type MaybePromise<T> = T | Promise<T>;
+function isPromise<T>(v: unknown): v is Promise<T> {
+  return typeof (v as { then?: unknown })?.then === 'function';
+}
+
+export default async function HomePage({params}: {params: MaybePromise<LayoutParams>}) {
+  const resolved = isPromise<LayoutParams>(params) ? await params : params;
+  const tHero = await getTranslations({locale: resolved.locale, namespace: "hero"});
+  const tContact = await getTranslations({locale: resolved.locale, namespace: "contact"});
+  const tAbout = await getTranslations({locale: resolved.locale, namespace: "about"});
+  const tSkills = await getTranslations({locale: resolved.locale, namespace: "skills"});
+  const tProjects = await getTranslations({locale: resolved.locale, namespace: "projects"});
+  const tExperience = await getTranslations({locale: resolved.locale, namespace: "experience"});
+  const tEducation = await getTranslations({locale: resolved.locale, namespace: "education"});
 
   return (
     <main className="relative">
@@ -94,7 +100,7 @@ export default async function HomePage({params}: {params: {locale: string}}) {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {PROJECTS.map((p) => (
-            <ProjectCard key={p.slug} p={p} locale={params.locale} />
+            <ProjectCard key={p.slug} p={p} locale={resolved.locale} />
           ))}
         </div>
       </Section>
