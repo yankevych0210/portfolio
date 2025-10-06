@@ -44,7 +44,7 @@ export default function ExperienceList() {
               </div>
             </Card>
           </DialogTrigger>
-          <DialogContent className="max-w-xl relative">
+          <DialogContent className="max-w-xl relative space-y-3 sm:space-y-4">
             <DialogClose asChild>
               <Button aria-label="Close" variant="ghost" size="icon" className="absolute right-2 top-2">
                 <X className="size-4" />
@@ -54,9 +54,9 @@ export default function ExperienceList() {
               <DialogTitle>{item.company} — {item.role}</DialogTitle>
             </DialogHeader>
             <div className="text-sm text-muted-foreground">{item.period}{item.type ? ` • ${item.type}` : ''}</div>
-            <p className="mt-3 text-sm leading-6">{item.description}</p>
+            <p className="text-sm leading-6">{item.description}</p>
             {item.projectUrls && item.projectUrls.length > 0 && (
-              <div className="mt-4 grid gap-2">
+              <div className="grid gap-2">
                 <div className="text-xs uppercase tracking-wide text-muted-foreground">Project{item.projectUrls.length > 1 ? 's' : ''}{item.projectName ? `: ${item.projectName}` : ''}</div>
                 <div className="flex flex-wrap gap-2">
                   {item.projectUrls.map((url) => (
@@ -69,7 +69,7 @@ export default function ExperienceList() {
                 </div>
               </div>
             )}
-            <div className="mt-4 flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5">
               {item.tags.map((t) => (
                 <Badge key={t} variant="secondary" className="text-xs py-0.5">{t}</Badge>
               ))}

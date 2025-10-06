@@ -42,7 +42,7 @@ export default function EducationList() {
               </div>
             </Card>
           </DialogTrigger>
-          <DialogContent className="max-w-xl relative">
+          <DialogContent className="max-w-xl relative space-y-3 sm:space-y-4">
             <DialogClose asChild>
               <Button aria-label="Close" variant="ghost" size="icon" className="absolute right-2 top-2">
                 <X className="size-4" />
@@ -52,9 +52,9 @@ export default function EducationList() {
               <DialogTitle>{item.institution} — {item.degree}</DialogTitle>
             </DialogHeader>
             <div className="text-sm text-muted-foreground">{item.period}</div>
-            <p className="mt-3 text-sm leading-6">{item.description}</p>
+            <p className="text-sm leading-6">{item.description}</p>
             {item.certificateUrl && (
-              <div className="mt-4">
+              <div>
                 <Button asChild variant="secondary" size="sm" className="gap-1">
                   <Link href={item.certificateUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="size-4" /> View Certificate
@@ -63,7 +63,7 @@ export default function EducationList() {
               </div>
             )}
             {item.tags && item.tags.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5">
                 {item.tags.map((t) => (
                   <Badge key={t} variant="secondary" className="text-xs py-0.5">{t}</Badge>
                 ))}
