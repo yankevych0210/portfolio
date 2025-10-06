@@ -3,8 +3,8 @@ import {Badge} from "@/components/ui/badge";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {EDUCATION} from "@/data/education";
-import {GraduationCap, Calendar, ExternalLink, ChevronRight} from "lucide-react";
-import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
+import {GraduationCap, Calendar, ExternalLink, ChevronRight, X} from "lucide-react";
+import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose} from "@/components/ui/dialog";
 
 export default function EducationList() {
   return (
@@ -42,7 +42,12 @@ export default function EducationList() {
               </div>
             </Card>
           </DialogTrigger>
-          <DialogContent className="max-w-xl">
+          <DialogContent className="max-w-xl relative">
+            <DialogClose asChild>
+              <Button aria-label="Close" variant="ghost" size="icon" className="absolute right-2 top-2">
+                <X className="size-4" />
+              </Button>
+            </DialogClose>
             <DialogHeader>
               <DialogTitle>{item.institution} — {item.degree}</DialogTitle>
             </DialogHeader>

@@ -64,13 +64,13 @@ export default async function ProjectPage({params}: {params: Promise<{locale: Lo
             {project.url && (
               <>
                 <dt className="text-muted-foreground">Website</dt>
-                <dd className="col-span-2"><Link className="underline" href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</Link></dd>
+                <dd className="col-span-2 break-all"><Link className="underline break-all" href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</Link></dd>
               </>
             )}
             {project.repo && (
               <>
                 <dt className="text-muted-foreground">Repository</dt>
-                <dd className="col-span-2"><Link className="underline" href={project.repo} target="_blank" rel="noopener noreferrer">{project.repo}</Link></dd>
+                <dd className="col-span-2 break-all"><Link className="underline break-all" href={project.repo} target="_blank" rel="noopener noreferrer">{project.repo}</Link></dd>
               </>
             )}
           </dl>
