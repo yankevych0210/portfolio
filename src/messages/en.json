@@ -1,71 +1,137 @@
 {
   "meta": {
-    "title": "Nazar Yankevych — Front‑End Developer",
-    "description": "Front‑end developer crafting unique, high‑quality web experiences."
+    "title": "Nazar Yankevych — Front-End Developer (React, Next.js, Shopify)",
+    "description": "Front-End Developer with 3+ years of commercial experience: React/Next.js apps, Shopify stores and conversion-focused websites. Case studies, experience and contacts."
   },
   "nav": {
-    "projects": "Projects",
     "about": "About",
-    "contact": "Contact",
     "experience": "Experience",
-    "resume": "Resume"
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "resume": "Resume",
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "language": "Change language",
+    "themeLight": "Switch to light theme",
+    "themeDark": "Switch to dark theme"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "name": "Nazar Yankevych",
-    "role": "Front‑End Developer",
-    "tagline": "Dedicated to creating unique web solutions. My projects are not just code but working, aesthetically appealing magic in the world of the web.",
-    "cta_projects": "View Projects",
-    "cta_contact": "Contact Me",
-    "download_resume": "View Resume"
+    "available": "Open to new opportunities",
+    "greeting": "Hi, I'm Nazar",
+    "role": "Front-End Developer",
+    "focus": "React · Next.js · TypeScript · Shopify",
+    "tagline": "I build fast, conversion-focused web products — from Figma to pixel-perfect, accessible UI. A marketing background helps me ship interfaces that convert, not just look good.",
+    "cta_projects": "View my work",
+    "cta_contact": "Get in touch",
+    "cta_resume": "Download CV",
+    "stat_years": "years of commercial experience",
+    "stat_projects": "projects in this portfolio",
+    "stat_companies": "companies & clients"
   },
   "about": {
-    "title": "About me",
-    "text": "I am a front‑end developer dedicated to creating unique web solutions. My projects are not just code but working, aesthetically appealing magic in the world of the web.",
-    "age": "Age",
+    "eyebrow": "About",
+    "title": "Developer with a marketer's eye",
+    "p1": "I'm a Front-End Developer from Kremenchuk, Ukraine, with 3+ years of commercial experience building React/Next.js applications, WordPress sites and Shopify stores.",
+    "p2": "Before code I studied digital marketing and targeted ads, so I think about every screen in terms of user behavior, speed and conversion. Today I work on a Shopify storefront for a fitness brand and build React apps and websites end-to-end.",
+    "points": [
+      {
+        "title": "Figma → production",
+        "text": "Pixel-perfect, responsive and cross-browser layouts with clean, reusable components."
+      },
+      {
+        "title": "Performance & SEO",
+        "text": "Core Web Vitals, image and video pipelines, pre-rendering, structured data."
+      },
+      {
+        "title": "Conversion mindset",
+        "text": "Funnels, A/B tests, tracking and analytics — Intelligems, Clarity, Keitaro."
+      }
+    ],
     "languages": "Languages",
-    "lang_en": "English — B1",
-    "lang_ru": "Russian — fluent",
-    "lang_ua": "Ukrainian — fluent"
-  },
-  "skills": {
-    "title": "Skills",
-    "list": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Redux",
-      "Bootstrap",
-      "Node.js",
-      "jQuery",
-      "Sass",
-      "Git"
-    ]
-  },
-  "projects": {
-    "title": "Projects",
-    "all": "All"
-  },
-  "education": {
-    "title": "Education"
+    "location": "Based in"
   },
   "experience": {
-    "title": "Experience"
+    "eyebrow": "Career",
+    "title": "Experience",
+    "subtitle": "Full-time, contract and freelance work since 2023.",
+    "current": "Current",
+    "relatedProjects": "Related case"
   },
-  "resume": {
-    "title": "Resume",
-    "download": "Open PDF",
-    "open": "Open in new tab",
-    "summary": "Front‑End Developer creating unique web solutions.",
-    "previewFallback": "PDF preview is not supported in this browser. Please use the buttons above to open or download the resume."
+  "projects": {
+    "eyebrow": "Portfolio",
+    "title": "Selected work",
+    "subtitle": "Commercial projects, my own products and technical assignments — each with a live demo, code and a short case study.",
+    "all": "All",
+    "commercial": "Commercial",
+    "product": "Products",
+    "test": "Test assignments",
+    "learning": "Learning",
+    "featured": "Featured",
+    "view_case": "Case study",
+    "live": "Live site",
+    "code": "Code",
+    "count": "{count, plural, one {# project} other {# projects}}",
+    "showAll": "Show all {count} projects",
+    "showLess": "Show less"
+  },
+  "project": {
+    "back": "All projects",
+    "overview": "Overview",
+    "features": "What I built",
+    "highlights": "Engineering highlights",
+    "stack": "Tech stack",
+    "role": "Role",
+    "year": "Year",
+    "client": "Client",
+    "category": "Type",
+    "links": "Links",
+    "live": "Open live site",
+    "code": "View source code",
+    "gallery": "Screenshots",
+    "mobile": "Mobile",
+    "next": "Next project",
+    "prev": "Previous project",
+    "screenshot": "Screenshot"
+  },
+  "skills": {
+    "eyebrow": "Toolbox",
+    "title": "Skills",
+    "subtitle": "The tools I use in day-to-day work and in the projects above."
+  },
+  "education": {
+    "eyebrow": "Learning",
+    "title": "Education & certificates"
   },
   "contact": {
-    "title": "Contacts",
+    "eyebrow": "Contact",
+    "title": "Let's build something that converts",
+    "subtitle": "Open to full-time roles and freelance projects. The fastest way to reach me is Telegram or email.",
     "email": "Email",
     "telegram": "Telegram",
     "linkedin": "LinkedIn",
     "phone": "Phone",
-    "github": "GitHub"
+    "github": "GitHub",
+    "location": "Location",
+    "write": "Write an email",
+    "copy": "Copy email",
+    "copied": "Email copied",
+    "writeTelegram": "Message on Telegram"
+  },
+  "resume": {
+    "title": "Resume",
+    "summary": "Front-End Developer · React / Next.js / TypeScript / Shopify. The latest version of my CV.",
+    "download": "Download PDF",
+    "open": "Open in new tab",
+    "previewFallback": "PDF preview is not supported in this browser. Use the buttons above to open or download the resume."
+  },
+  "footer": {
+    "built": "Built with Next.js, TypeScript and Tailwind CSS.",
+    "top": "Back to top"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for doesn't exist or has been moved.",
+    "back": "Go to homepage"
   }
 }

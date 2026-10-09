@@ -1,23 +1,30 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "Portfolio of Nazar Yankevych \u2014 Front-End Developer (React, Next.js, TypeScript, Shopify)",
+  "author": "Nazar Yankevych <yankevich02@gmail.com> (https://portfolio-yankevych.vercel.app)",
+  "license": "MIT",
+  "homepage": "https://portfolio-yankevych.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yankevych0210/portfolio.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fancyapps/ui": "^6.0.34",
-    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
-    "@radix-ui/react-label": "^2.1.7",
-    "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-slot": "^1.2.3",
-    "@radix-ui/react-switch": "^1.2.6",
-    "@radix-ui/react-tooltip": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",

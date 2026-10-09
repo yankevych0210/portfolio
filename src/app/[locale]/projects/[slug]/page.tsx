@@ -1,81 +1,83 @@
+import type {Metadata} from "next";
 import {notFound} from "next/navigation";
-import {PROJECTS} from "@/data/projects";
-import Link from "next/link";
-import type {Locale} from "@/i18n/locales";
-import ProjectGallery from "@/components/project-gallery";
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
+import {getTranslations, setRequestLocale} from "next-intl/server";
+import ProjectHeader from "@/components/project/project-header";
+import ProjectDetails from "@/components/project/project-details";
+import ProjectGallery from "@/components/project/project-gallery";
+import ProjectNav from "@/components/project/project-nav";
+import JsonLd from "@/components/shared/json-ld";
+import {PROJECTS, getProject} from "@/data/projects";
+import {SITE_NAME, SITE_URL} from "@/config/site";
+import {isLocale, locales} from "@/i18n/locales";
+import {alternatesFor} from "@/lib/seo";
+
+type Params = Promise<{locale: string; slug: string}>;
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({slug: p.slug}));
+  return locales.flatMap((locale) => PROJECTS.map((p) => ({locale, slug: p.slug})));
 }
 
-export default async function ProjectPage({params}: {params: Promise<{locale: Locale; slug: string}>}) {
-  const { locale, slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
-  if (!project) return notFound();
+export async function generateMetadata({params}: {params: Params}): Promise<Metadata> {
+  const {locale, slug} = await params;
+  const p = getProject(slug);
+  if (!p || !isLocale(locale)) return {};
+  return {
+    title: p.title,
+    description: p.summary[locale],
+    alternates: alternatesFor(locale, `/projects/${slug}`),
+    openGraph: {
+      type: "article",
+      title: `${p.title} — ${SITE_NAME}`,
+      description: p.summary[locale],
+      url: `/${locale}/projects/${slug}`,
+      images: [{url: p.images[0], alt: p.title}]
+    },
+    twitter: {card: "summary_large_image", title: p.title, description: p.summary[locale], images: [p.images[0]]}
+  };
+}
+
+export default async function ProjectPage({params}: {params: Params}) {
+  const {locale, slug} = await params;
+  if (!isLocale(locale)) notFound();
+  const project = getProject(slug);
+  if (!project) notFound();
+  setRequestLocale(locale);
+  const t = await getTranslations({locale, namespace: "project"});
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12 space-y-8">
-      <Link href={`/${locale}#projects`} className="text-sm text-muted-foreground hover:underline">← Back to projects</Link>
+    <main className="mx-auto max-w-6xl px-4 pb-8 pt-8 sm:pt-12">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.title,
+          description: project.summary[locale],
+          url: `${SITE_URL}/${locale}/projects/${slug}`,
+          image: `${SITE_URL}${project.images[0]}`,
+          dateCreated: project.year.slice(0, 4),
+          author: {"@type": "Person", name: SITE_NAME, url: SITE_URL},
+          keywords: project.stack.join(", ")
+        }}
+      />
 
-      <header className="space-y-2">
-        <div className="flex items-center gap-2">
-          <h1 className="text-3xl font-semibold tracking-tight">{project.title}</h1>
-          {project.status && (
-            <Badge variant="secondary" className="ml-1">{project.status}</Badge>
-          )}
-        </div>
-        <p className="text-muted-foreground">{project.summary}</p>
-        <div className="flex flex-wrap gap-2 pt-1">
-          {project.stack.map((s) => (
-            <Badge key={s} variant="outline">{s}</Badge>
-          ))}
-        </div>
-        <div className="flex gap-3 pt-2">
-          {project.url && (
-            <Button asChild>
-              <Link href={project.url} target="_blank" rel="noopener noreferrer">Visit Site</Link>
-            </Button>
-          )}
-          {project.repo && (
-            <Button asChild variant="outline">
-              <Link href={project.repo} target="_blank" rel="noopener noreferrer">View Code</Link>
-            </Button>
-          )}
-          <Button asChild variant="outline">
-            <Link href={`/${locale}#projects`}>Back</Link>
-          </Button>
-        </div>
-      </header>
+      <ProjectHeader project={project} locale={locale} />
+      <ProjectDetails project={project} locale={locale} />
 
-      <section>
-        <ProjectGallery images={project.images ?? (project.image ? [project.image] : [])} alt={project.title} />
-      </section>
+      {(project.images.length > 1 || project.mobileImage) && (
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold tracking-tight">{t("gallery")}</h2>
+          <div className="mt-6">
+            <ProjectGallery
+              images={project.images.slice(1)}
+              mobileImage={project.mobileImage}
+              alt={project.title}
+              labels={{screenshot: t("screenshot"), mobile: t("mobile")}}
+            />
+          </div>
+        </section>
+      )}
 
-      <section className="grid gap-6 sm:grid-cols-1">
-        <div className="rounded-lg border p-4">
-          <h2 className="text-lg font-semibold tracking-tight mb-2">Details</h2>
-          <dl className="grid grid-cols-3 gap-x-3 gap-y-2 text-sm">
-            <dt className="text-muted-foreground">Role</dt>
-            <dd className="col-span-2">{project.role}</dd>
-            <dt className="text-muted-foreground">Stack</dt>
-            <dd className="col-span-2">{project.stack.join(', ')}</dd>
-            {project.url && (
-              <>
-                <dt className="text-muted-foreground">Website</dt>
-                <dd className="col-span-2 break-all"><Link className="underline break-all" href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</Link></dd>
-              </>
-            )}
-            {project.repo && (
-              <>
-                <dt className="text-muted-foreground">Repository</dt>
-                <dd className="col-span-2 break-all"><Link className="underline break-all" href={project.repo} target="_blank" rel="noopener noreferrer">{project.repo}</Link></dd>
-              </>
-            )}
-          </dl>
-        </div>
-      </section>
+      <ProjectNav slug={slug} locale={locale} />
     </main>
   );
 }

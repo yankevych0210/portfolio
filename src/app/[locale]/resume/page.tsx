@@ -1,32 +1,48 @@
-import {getTranslations} from "next-intl/server";
-import Link from "next/link";
-import {FileDown} from "lucide-react";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
+import {getTranslations, setRequestLocale} from "next-intl/server";
+import {Download, ExternalLink} from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {isLocale} from "@/i18n/locales";
+import {alternatesFor} from "@/lib/seo";
 
-type LayoutParams = { locale: string };
+type Params = Promise<{locale: string}>;
 
-export default async function ResumePage({params}: {params: Promise<LayoutParams>}) {
-  const { locale } = await params;
+export async function generateMetadata({params}: {params: Params}): Promise<Metadata> {
+  const {locale} = await params;
+  if (!isLocale(locale)) return {};
   const t = await getTranslations({locale, namespace: "resume"});
+  return {title: t("title"), description: t("summary"), alternates: alternatesFor(locale, "/resume")};
+}
+
+export default async function ResumePage({params}: {params: Params}) {
+  const {locale} = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  const t = await getTranslations({locale, namespace: "resume"});
+
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12 space-y-6">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="text-muted-foreground">{t("summary")}</p>
-        <div className="flex gap-3 pt-1">
-          {/* Use native anchor to avoid Next prefetching static PDF with _rsc */}
-          <a href="/resume.pdf" target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90">
-            <FileDown className="size-4" /> {t("download")}
-          </a>
+    <main className="mx-auto max-w-4xl space-y-6 px-4 py-12">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t("title")}</h1>
+          <p className="text-muted-foreground">{t("summary")}</p>
+        </div>
+        {/* Plain anchors: a static PDF should not go through the client router. */}
+        <div className="flex gap-2">
+          <Button asChild className="gap-2">
+            <a href="/resume.pdf" download="Nazar-Yankevych-CV.pdf"><Download className="size-4" /> {t("download")}</a>
+          </Button>
+          <Button asChild variant="outline" className="gap-2">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"><ExternalLink className="size-4" /> {t("open")}</a>
+          </Button>
         </div>
       </header>
-      <div className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
-        <div className="aspect-[8.5/11] w-full">
-          <object data="/resume.pdf" type="application/pdf" width="100%" height="100%">
-            <p className="p-4 text-sm text-muted-foreground">{t("previewFallback")}</p>
-          </object>
-        </div>
+      <div className="overflow-hidden rounded-2xl border bg-card shadow-sm">
+        <object data="/resume.pdf#view=FitH" type="application/pdf" className="aspect-[1/1.414] w-full">
+          <p className="p-6 text-sm text-muted-foreground">{t("previewFallback")}</p>
+        </object>
       </div>
     </main>
   );
 }
-
