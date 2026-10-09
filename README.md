@@ -7,7 +7,7 @@
 
 Personal portfolio of **Nazar Yankevych**, Front-End Developer (React · Next.js · TypeScript · Shopify).
 
-**Live:** https://portfolio-yankevych.vercel.app · **CV:** [/resume](https://portfolio-yankevych.vercel.app/en/resume)
+**Live:** https://yankevych-portfolio.vercel.app · **CV:** [/resume](https://yankevych-portfolio.vercel.app/en/resume)
 
 ## Features
 
@@ -47,7 +47,7 @@ npm start
 
 | Env variable | Default | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://portfolio-yankevych.vercel.app` | Absolute URL for metadata, sitemap and JSON-LD |
+| `NEXT_PUBLIC_SITE_URL` | `https://yankevych-portfolio.vercel.app` | Absolute URL for metadata, sitemap and JSON-LD |
 
 ## Architecture
 

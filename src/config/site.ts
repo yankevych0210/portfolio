@@ -1,5 +1,5 @@
 /** Absolute site URL used for metadata, sitemap and JSON-LD. */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-yankevych.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://yankevych-portfolio.vercel.app";
 
 export const SITE_NAME = "Nazar Yankevych";
 

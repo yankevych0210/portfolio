@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Portfolio of Nazar Yankevych \u2014 Front-End Developer (React, Next.js, TypeScript, Shopify)",
-  "author": "Nazar Yankevych <yankevich02@gmail.com> (https://portfolio-yankevych.vercel.app)",
+  "author": "Nazar Yankevych <yankevich02@gmail.com> (https://yankevych-portfolio.vercel.app)",
   "license": "MIT",
-  "homepage": "https://portfolio-yankevych.vercel.app",
+  "homepage": "https://yankevych-portfolio.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/yankevych0210/portfolio.git"
